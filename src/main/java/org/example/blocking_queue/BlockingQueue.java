@@ -1,3 +1,5 @@
+package org.example.blocking_queue;
+
 import java.util.concurrent.atomic.AtomicLong;
 
 public class BlockingQueue<T> {

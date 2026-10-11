@@ -32,4 +32,47 @@ public class MyStringBuilder {
         this(str.length() + 16);
         append(str);
     }
+
+    public MyStringBuilder append(String str) {
+        saveSnapshot();
+        if(str == null) str = "null";
+        ensureCapacity(count + str.length());
+        str.getChars(0, str.length(), value, count);
+        count += str.length();
+        return this;
+    }
+
+    public MyStringBuilder append(char c) {
+        saveSnapshot();
+        ensureCapacity(count + 1);
+        value[count++] = c;
+        return this;
+    }
+
+    public MyStringBuilder deleteCharAt(int index) {
+        checkIndex(index);
+        saveSnapshot();
+        System.arraycopy(value, index + 1, value, index, count - index - 1);
+        count--;
+        return this;
+    }
+
+    public MyStringBuilder insert(int offset, String str) {
+        if (offset < 0 || offset > count) throw new IndexOutOfBoundsException();
+        saveSnapshot();
+        int len = str.length();
+        ensureCapacity(count + len);
+        System.arraycopy(value, offset, value, offset + len, count - offset);
+        str.getChars(0, len, value, offset);
+        count += len;
+        return this;
+    }
+
+    public MyStringBuilder reverse() {
+        saveSnapshot();
+        for (int i = 0, j = count - 1; i < j; i++, j--) {
+            char t = value[i]; value[i] = value[j]; value[j] = t;
+        }
+        return this;
+    }
 }

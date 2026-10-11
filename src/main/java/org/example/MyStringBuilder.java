@@ -18,4 +18,18 @@ public class MyStringBuilder {
     private char[] value;
     private int count;
     private final Deque<Snapshot> history = new ArrayDeque<>();
+
+    public MyStringBuilder() {
+        this(16);
+    }
+
+    public MyStringBuilder(int capacity) {
+        this.value = new char[Math.max(capacity, 1)];
+        this.count = 0;
+    }
+
+    public MyStringBuilder(String str) {
+        this(str.length() + 16);
+        append(str);
+    }
 }

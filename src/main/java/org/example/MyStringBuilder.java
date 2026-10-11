@@ -75,4 +75,37 @@ public class MyStringBuilder {
         }
         return this;
     }
+
+    private void saveSnapshot() {
+        history.push(new Snapshot(value.clone(), count));
+    }
+
+    public boolean undo() {
+        if (history.isEmpty()) return false;
+        Snapshot s = history.pop();
+        this.value = s.value;
+        this.count = s.count;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return new String(value, 0, count);
+    }
+
+    public int length() { return count; }
+
+    private void ensureCapacity(int min) {
+        if (min > value.length) {
+            int newCap = value.length * 2 + 2;
+            if (newCap < min) newCap = min;
+            char[] nv = new char[newCap];
+            System.arraycopy(value, 0, nv, 0, count);
+            value = nv;
+        }
+    }
+
+    private void checkIndex(int i) {
+        if (i < 0 || i >= count) throw new StringIndexOutOfBoundsException(i);
+    }
 }

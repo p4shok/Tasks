@@ -108,4 +108,5 @@ public class MyStringBuilder {
     private void checkIndex(int i) {
         if (i < 0 || i >= count) throw new StringIndexOutOfBoundsException(i);
     }
+
 }

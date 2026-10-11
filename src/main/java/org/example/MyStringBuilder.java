@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class MyStringBuilder {
 
     private final class Snapshot {
@@ -11,4 +14,8 @@ public class MyStringBuilder {
             this.count = count;
         }
     }
+
+    private char[] value;
+    private int count;
+    private final Deque<Snapshot> history = new ArrayDeque<>();
 }

@@ -1,0 +1,14 @@
+LoginTest|PASSED|140
+CreateTaskTest|FAILED|890
+CommentTest|SKIPPED|0
+CreateTaskTest|PASSED|920
+ProfileTest|PASSED|315
+SearchTest|PASSED|1220
+CartTest|FAILED|1540
+CartTest|PASSED|640
+CheckoutTest|PASSED|2610
+ApiSmokeTest|PASSED|196
+LogoutTest|SKIPPED|0
+RegistrationTest|FAILED|1030
+RegistrationTest|PASSED|780
+PasswordResetTest|PASSED|455
